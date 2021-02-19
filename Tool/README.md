@@ -1,4 +1,4 @@
-# IntelliJ 단축키 (윤하씨가 주심)
+### IntelliJ 단축키 (윤하씨가 주심)
    
 Ctrl + Space 코드 자동완성   
 (Ctrl+Shift+Space) 적합코드 자동완성   
