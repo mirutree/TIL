@@ -18,7 +18,8 @@ document.writeln(string.indexOf(findStr3)); // '아'는 없으므로 -1
 문자열 좌우 공백 제거. 웬만한 브라우저 다 지원되는 기능임. 다만 IE8이전도 지원해야 할 때 씀
 ```javascript
 var str = "       안녕하세요?      "; 
-var trimStr = str.trim(); // 안녕하세요?
+var trimStr = str.trim(); 
+document.writeln(trimStr); // 안녕하세요?
 ```
 ##### element.id
 요소의 식별자
