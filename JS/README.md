@@ -20,3 +20,9 @@ document.writeln(string.indexOf(findStr3)); // '아'는 없으므로 -1
 var str = "       안녕하세요?      "; 
 var trimStr = str.trim(); // 안녕하세요?
 ```
+##### element.id
+요소의 식별자
+```javascript
+var idStr = elt.id; // 아이디를 가져오는 형식
+elt.id = idStr; // 아이디를 부여하는 형식
+```
