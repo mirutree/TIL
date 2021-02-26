@@ -31,5 +31,6 @@ elt.id = idStr; // 아이디를 부여하는 형식
 ```javascript
 var words = ['ab가나', 'bcde', '다라마바', '아자카타abc', 'efghijklmn', '마바아자def'];
 var result = words.filter(word => word.indexOf('b') > -1);
+
 console.log(result); // 결과 : b가 포함된 ["ab가나", "bcde", "아자카타abc"] 가 콘솔에 찍힌다
 ```
