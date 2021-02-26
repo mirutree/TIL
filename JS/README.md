@@ -14,3 +14,9 @@ document.writeln(string.indexOf(findStr1)); // '가'의 위치는 0
 document.writeln(string.indexOf(findStr2)); // '나'의 위치는 1
 document.writeln(string.indexOf(findStr3)); // '아'는 없으므로 -1 
 ```
+##### trim()
+문자열 좌우 공백 제거. 웬만한 브라우저 다 지원되는 기능임. 다만 IE8이전도 지원해야 할 때 씀
+```javascript
+var str = "       안녕하세요?      "; 
+var trimStr = str.trim(); // 안녕하세요?
+```
