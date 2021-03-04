@@ -14,8 +14,9 @@ File > Settings > Live Templates에 가면 더 많은 축약어를 확인할 수
    
 **실행환경 실행(RUN)**      
 - RUN :  `Ctrl + Shift + F10`   
-- 이전 실행환경에서 RUN : `Shift + F10` <-실행 기준은 상단에 셀렉트 할수 있는 곳이 있음!
-[제목 없음](https://user-images.githubusercontent.com/63778557/109759022-c24c0080-7c2f-11eb-832e-a0f287e735a4.png)      
+- 이전 실행환경에서 RUN : `Shift + F10` 
+![제목 없음](https://user-images.githubusercontent.com/63778557/109759022-c24c0080-7c2f-11eb-832e-a0f287e735a4.png) <-실행 기준은 상단에 셀렉트 할수 있는 곳이 있음!
+
     
 **라인 수정하기**
 - 라인복제 : 포커스(커서)를 라인 어떤곳이든 두고 `crtl + D` (바로 밑줄에 라인이 복제됨)       
