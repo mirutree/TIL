@@ -2,32 +2,43 @@
     <head>
         <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><!--이 문법을 쓸 수 있기 위해 넣음-->
+
+        
     </head>
     <body>
         <div id="root"></div> <!-- 결과 : <div id="root"><button>Like</button></div>-->
-        <script>
-            const e = React.createElement;
-
+        <script type="text/babel"> // 공통되는 부분을 만들어 두면 재사용성이 높아진다
             class LikeButton extends React.Component { // 리액트 안 컴포넌트 상속
                 constructor(props) {
                     super(props);
                     this.state = { // 바뀔 여지가 있는 부분 : state
                         liked: false,
-                    }
+                    };
                 }
 
                 render() {
-                    return <button type="submit" onClick = { () => { this.setState({ liked: true }) } }>Like</button>;
-                    // e('button', 
-                    //     { onClick: () => { this.setState({ liked: true }) }, type: 'submit' }, 
-                    //     this.state.liked === true ? 'Liked' : 'Like',
-                    // ); 
+                    // HTML태그처럼 쓸 수 있다.
+                    return <button type="submit" onClick = { () => { this.setState({ liked: true }) } }>
+                        { this.state.liked === true ? '좋아요 누름' : '좋아요' }
+                    </button>; 
+                    // JSX ( JS + XML ) 
                 }
             }
+            <button onClick={onclick}>Like</button>
+            
         </script>
-        <script>
-            ReactDOM.render(e(LikeButton), document.querySelector('#root')); // 리액트돔이 화면에 반영
+        <script type=text/babel>
+            ReactDOM.render(<div>
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+                <LikeButton />
+            </div>, document.querySelector('#root')); // 리액트돔이 화면에 반영
         </script>
         
     </body>
