@@ -156,20 +156,19 @@
 ---
 #### ⭐Node.js?
  - Chrome의 V8 JavaScript 엔진으로 빌드 된 `JavaScript 런타임 환경`이다.
- - **Google Chrome V8 엔진**?
-    - 구글 크롬과 Node.js에서 사용되고 있는 구글에서 제작한 자바스크립트 엔진
-    - C++로 작성되었고 자바스크립트 전용의 웹 어셈블리 엔진이다.
-    - 자바스크립트 엔진은 코드 한 줄을 해석하고 바로 실행하는 인터프리터 형식이지만, V8엔진은 자바스크립트 코드를 ByteCode로 컴파일하고 실행하는 방식을 사용한다.
-    - V8엔진은 독립형으로 개발되었기 때문에 웹 브라우저 뿐 아니라 C++프로그램에 별도로 내장하여 실행시킬 수 있다.
-    - 그렇기에 C++로 작성한 언어를 V8엔진을 이용하여 자바스크립트에서 동작할수 있기 때문에 순수자바스크립트보다 더 많은 일을 할 수 있다.
  - 웹서버와 같은 확장성 있는 네트워크 애플리케이션(특히 서버사이드) 개발에 사용되는 소프트웨어 플랫폼.
  - Node.js는 JavaScript를 서버에서도 사용할 수 있도록 만든 프로그램이다.
  - 다양한 JavaScript 애플리케이션을 실행할 수 있지만 서버를 실행하는데 가장 많이 사용된다.
  - 비동기 I/O 처리(Non-Blocking I/O)와 단일 스레드 이벤트 루프를 통해 높은 처리성능을 가지고 있다.
  - 내장 HTTP서버 라이브러리를 포함하고 있다. 
  - 2009년 Ryan Dahl(라이언 달)이라는 개발자가 개발하였고, 2012년에 프로젝트에서 물러났다가 2018년 Deno라는 새로운 런타임을 발표했다.
-   
- - Node.js 사용이유?
+ - **Google Chrome V8 엔진**?
+    - 구글 크롬과 Node.js에서 사용되고 있는 구글에서 제작한 자바스크립트 엔진
+    - C++로 작성되었고 자바스크립트 전용의 웹 어셈블리 엔진이다.
+    - 자바스크립트 엔진은 코드 한 줄을 해석하고 바로 실행하는 인터프리터 형식이지만, V8엔진은 자바스크립트 코드를 ByteCode로 컴파일하고 실행하는 방식을 사용한다.
+    - V8엔진은 독립형으로 개발되었기 때문에 웹 브라우저 뿐 아니라 C++프로그램에 별도로 내장하여 실행시킬 수 있다.
+    - 그렇기에 C++로 작성한 언어를 V8엔진을 이용하여 자바스크립트에서 동작할수 있기 때문에 순수자바스크립트보다 더 많은 일을 할 수 있다.  
+ - **Node.js 사용이유?**
     - 자바스크립트는 스크립트 언어이기 때문에 웹 브라우저 프로그램 안에서만 동작한다.
     - Node.js는 자바스크립트를 웹 브라우저에서 독립시켰기 때문에 Node.js를 설치하게 되면 터미널 프로그램에서 바로 실행할 수 있다.
     - 이전까지는 Server-Client웹사이트를 만들 때는 웹에서 표시되는 부분 말고는 서버 부분에 자바스크립트를 사용할 수 없었지만 Node.js를 이용하여 자바스크립트만으로 전체 웹페이지를 만들 수 있게 되었다.
@@ -196,7 +195,63 @@
 ---
 #### ⭐OAuth2
 ---
-#### ⭐클로저
+#### ⭐클로저(Closure)
+ - 클로저(Closure)에 대한 [MDN 정의](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)
+```
+"A closure is the combination of a function bundled together (enclosed)
+with references to its surrounding state (the **lexical environment**). 
+In other words, a closure gives you access to an outer function’s scope from an inner function. 
+In JavaScript, closures are created every time a function is created, at function creation time."
+
+클로저는 함수 주변 상태(어휘 환경 :lexical environment)와 함수의 조합이다.
+클로져는 우리에게 내부 함수에서 외부함수의 범위에 접근할 수 있게 한다. 
+자바스크립트에서는 함수가 생성될 때마다 클로저가 생성된다.
+```
+   
+ - 어휘적 범위지정(Lexical scping)
+ - [자바스크립트 코드를 테스트할 수 있는 곳](jsfiddle.net)
+
+```javascript
+function sample() {
+  var name = "mirutree";   // sample함수에 의해 생성된 지연 변수
+  function displayName() { // 내부함수이며, 클로저
+    console.log(name);     // 부모함수에서 선언된 변수 사용
+  }
+  displayName();
+}
+sample(); // 실행하면, "mirutree"라는 로그가 찍힌다.
+```   
+   
+splayName()은 내부함수이고 sample() 함수 안에서만 사용할 수 있다. 그리고 displayName() 내부엔 자신만의 지역변수가 없다.      
+하지만 함수 내부에서 외부함수의 변수에 접근할 수 있기 때문에 부모함수에서 선언된 변수 name에 접근할 수 있다.   
+displayName()가 자신만의 name변수를 가지고 있었다면 `name` 대신 `this.name`을 사용했을 것이다.      
+예시를 총해 함수가 중첩된 상황에서 어떻게 변수를 처리하는지 알 수 있다.   
+어휘적 범위지정(Lexical scping)의 한 예이다.   
+중첩된 함수는 외부 범위(scope)에서 선언한 변수에도 접근할 수 있다.   
+   
+ - 클로저(Closure)
+```javascript
+function outerFunc() {
+  var name = "mirutree";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+var myFunc = outerFunc(); // 변수에 displayName을 리턴함 / 유효범위의 어휘적 환경 유지
+myFunc(); // 리턴된 displayName 함수를 실행 (name 변수에 접근)
+```
+   
+위의 코드는 동일한 결과가 실행되지만, displayName()함수가 실행되기도 전에 외부함수인 outerFunc()로부터 리턴되어 myFunc이라는 변수에 저장된다.   
+몇 프로그래밍 언어에서 함수 안의 지역변수들은 *함수가 처리되는 동안에만 존재*한다.   
+자바스크립트는 함수를 리턴하고, 리턴하는 함수가 클로저를 형성하기 때문에 함수 안 지역변수들을 외부에서도 쓸 수 있다.   
+클로저란? 함수와 함수가 선언된 어휘적 환경의 조합이다.    
+환경은 클로저가 생성된 시점의 **유효범위 내에 있는 모든 지역 변수**로 구성된다.    
+myFunc는 makeFunc이 실행될 때 셍성된 displayName함수의 인스턴스에 대한 참조다.    
+displayName의 인스턴스는 변수 name이 있는 어휘적 환경에 대한 참조를 유지한다.      
+이런이유로 myFunc가 호출될 때 변수 name을 사용할 수 있다.
+   
 ---
 #### ⭐리덕스
 ---
