@@ -195,7 +195,7 @@
 ---
 #### ⭐OAuth2
 ---
-#### ⭐클로저(Closure)
+#### ⭐클로저(Closure) ver1.
  - 클로저(Closure)에 대한 [MDN 정의](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)
 ```
 "A closure is the combination of a function bundled together (enclosed)
@@ -258,4 +258,16 @@ displayName의 인스턴스는 변수 name이 있는 어휘적 환경에 대한 
 #### ⭐서버사이드 랜더링
 ---
 #### ⭐cors
+---
+#### ⭐React의 생명 주기(Life Cycle)
+---
+#### ⭐(Express)미들웨어
+---
+#### ⭐React의 불변성
+---
+#### ⭐React hooks
+---
+#### ⭐클로저(Closure) ver2.
+---
+#### ⭐Redux-Saga (Redux-Thunk)
 ---
