@@ -260,6 +260,27 @@ displayName의 인스턴스는 변수 name이 있는 어휘적 환경에 대한 
 #### ⭐cors
 ---
 #### ⭐React의 생명 주기(Life Cycle)
+ - [라이프사이클 다이어그램 링크](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+ - 모든 컴포넌트는 여러종류의 생명주기 메서드를 가진다.
+ - 이 메서드를 오버라이딩하여 **특정 시점에 코드가 실행**되도록 할 수 있다.
+ - **Mount** *(컴포넌트 처음 실행 - 컴포넌트의 인스턴스가 생성되어 DOM에 삽입될 때)*
+    - **constructor()** 
+        : 해당컴포넌트가 마운트되기 전에 호출. this.state에 객체를 할당하여 지역state를 초기회하거나 인스턴스에 이벤트처리 메서드를 바인딩할 때 사용
+    - static getDerivedStateFromProps() : render() 메서드 직전에 호출. props에 있는 값을 state에 동기화시킬 때 사용
+    - **render()** : 클래스 컴포넌트에서 반드시 구현되어야하는 메서드. 컴포넌트를 렌더링하는 메서드
+    - **componentDidMount()** : 컴포넌트가 마운트된 직후에 호출된다. API를 통해 데이터를 가져올때 적합하다.
+   
+ - **Update** *(props 또는 state가 변경될 때)*
+    - static getDerivedStateFromProps() : render()메서드 직전에 호출. props의 변화에 따라 state 값에도 변화를 주고 싶은 경우에 사용.
+    - shouldComponentUpdate() : props또는 state를 변경했을 때, 리렌더링을 시작할지 여부를 지정하는 메서드. true면 다음 라이프사이클 계속 실행, false면 작업중지
+    - **render()** : 컴포넌트 리랜더링
+    - getSnapshotBeforeUpdate() : 가장 마지막으로 랜더링된 결과가 DOM에 반영되기 전에 호출. 채팅화면처름 스크롤위치가 필요한 경우 사용. 반환값은 **componentDidUpdate()** 에 인자로 전달된다.
+    - **componentDidUpdate()** : 갱신이 일어난 직후 호출. 컴포넌트가 갱신되었을 때 DOM을 조작하기 위해 활용한다.
+    
+ - **Unmount** *(컴포넌트가 DOM에서 제거될 때)*
+    - **componentWillUnmount()** : 컴포넌트가 마운트 해제되어 제거되기 직전에 호출. **componentDidMount()** 내에서 생성된 구독 해제 등 모든 정리작업을 수행한다. 이제 컴포넌트는 다시 랜더링되지 않기 때문에 setState()를 호출하면 안된다.   
+   
+   
 ---
 #### ⭐(Express)미들웨어
 ---
@@ -271,3 +292,17 @@ displayName의 인스턴스는 변수 name이 있는 어휘적 환경에 대한 
 ---
 #### ⭐Redux-Saga (Redux-Thunk)
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
