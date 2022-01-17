@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><!--이 문법을 쓸 수 있기 위해 넣음-->
+  </head>
+
+  <body>
+    <div id="root"></div> 
+    <script type="text/babel"> // 공통되는 부분을 만들어 두면 재사용성이 높아진다
+      class GuGuDan extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+              firstNum: Math.ceil(Math.random() * 9),  // 구구단 첫번째 숫자 1~9랜덤값
+              secondNum: Math.ceil(Math.random() * 9), // 구구단 두번째 숫자
+              value: '',  // 입력창 값
+              result: '', // 결과값
+          };
+        }
+
+        onSubmit = (e) => { // form을 submit했을 때
+          e.preventDefault(); // 이벤트 발생 시 브라우저의 동작을 취소
+
+          if (parseInt(this.state.value) === this.state.firstNum * this.state.secondNum) {
+            this.setState((prevState) => { // prevState -> 예전state, 바꾸기 전 상태값
+              // 예전 state의 값으로 새로운 state를 만들 땐 return을 해주는 함수를 쓴다
+              return {
+                result: prevState.value + '! 정답입니다!',
+                firstNum: Math.ceil(Math.random() * 9),
+                secondNum: Math.ceil(Math.random() * 9),
+                value: '',  
+              }
+            });
+            this.input.focus();
+          } else {
+            this.setState({
+              result: this.state.value + '? 정답이 아닙니다.',
+              value: '',
+            });
+            this.input.focus();
+          }
+        };
+
+        onChange = (e) => {
+          this.setState({ value: e.target.value });
+        };
+
+        input;
+        
+        onRefInput = (c) => { this.input = c };
+
+        // 컨텐츠
+        render() {
+          console.log('렌더링');
+          return (
+            // <>가 에러가 나면 <React.Fragment>
+            <> 
+              <div>{this.state.firstNum} X {this.state.secondNum}은(는)?</div>  
+              <form onSubmit={this.onSubmit}>
+                <input ref={this.onRefInput}
+                  type="number" defaultValue={this.state.value} onChange={this.onChange} />
+                <button>입력</button>
+              </form>
+              <div>{this.state.result}</div>
+            </>
+          );
+        }
+      }
+    </script>
+    <script type=text/babel>
+        ReactDOM.render(<div><GuGuDan /></div>, document.querySelector('#root')); // 리액트돔이 화면에 반영
+    </script>
+    
+  </body>
+</html>
