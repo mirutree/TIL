@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>구구단</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><!--이 문법을 쓸 수 있기 위해 넣음-->
+  </head>
+
+  <body>
+    <div id="root"></div> 
+    <script type="text/babel"> 
+
+    const GuGuDan = () => {
+      // GuGudan 컴포넌트 안에 넣어줘야 함
+      // use로 시작되는 애들이 hooks임
+      const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+      const [secound, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+      const [value, setValue] = React.useState('');
+      const [result, setResult] = React.useState('');
+      const inputRef = React.useRef(null);
+    
+      const onChangeInput = (e) => {
+        setValue(e.target.value);
+      };
+
+      const onSubmitForm = (e) => {
+        e.preventDefault();
+        if (parseInt(value) === first * secound) {
+          setResult('정답입니다! 답은 ' +value+ '이(가) 맞습니다.');
+          setFirst(Math.ceil(Math.random() * 9));
+          setSecond(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();
+
+        } else {
+          setResult(value +'은(는) 정답이 아닙니다. 다시 풀어보세요.');
+          setValue('');
+          inputRef.current.focus();
+        }
+      };
+
+      console.log('렌더링');
+
+      /* 리액트에서는 
+      class -> className
+      for -> htmlFor
+      */
+      return (<>
+          <div>{first} X {secound} 는? </div>
+          <form onSubmit={onSubmitForm}>
+            <input ref={inputRef} onChange={onChangeInput} value={value} />
+            <button>입력</button>
+          </form>
+          <div id="result"> {result} </div>
+        </>);
+    }
+      
+    </script>
+    <script type=text/babel>
+        ReactDOM.render(<div><GuGuDan /></div>, document.querySelector('#root')); // 리액트돔이 화면에 반영
+    </script>
+    
+  </body>
+</html>
