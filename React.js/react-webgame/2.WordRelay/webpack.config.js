@@ -1,4 +1,5 @@
 const path = require('path'); // node의 path모듈 - 경로를 다룰 때 사용
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     name: 'wordreplay-setting',
@@ -18,18 +19,38 @@ module.exports = {
             test: /\.jsx?/, // .js, .jsx로 끝나는 babel이 컴파일하게 할 모든 파일
             loader: 'babel-loader', // babel loader가 파이프를 통해 js 코드를 불러옴
             options: { // 바벨의 옵션
-                presets: ['@babel/preset-env', '@babel/preset-react'],
-                plugins: ['@babel/proposal-class-properties'],
+                presets: [ // 플러그인들의 모임
+                    ['@babel/preset-env', {
+                        targets: {
+                            browsers: ['> 1% in KR'], // borowserlist
+                        },
+                        debug: true,
+                    }], 
+                    '@babel/preset-react'], 
+                plugins: [
+                    '@babel/proposal-class-properties',
+                    'react-refresh/babel',
+                ],
             },
         }], 
-    }, 
+    },
+
+    plugins: [
+        new RefreshWebpackPlugin()
+    ],
 
     output: { // 웹팩설정 출력
         path: path.join(__dirname, 'dist'), 
         // .join - 경로를 알아서 합쳐줌(인자로 받은 경로들을 하나의 문자열 형태로 리턴)
         //  __dirname - file 명을 제외한 절대 경로
         // 즉 현재폴더 안의 /dist 경로를 말한다
+        filename: 'app.js',
+        publicPath: '/dist',
+    },
 
-        filename: 'app.js'
+    devServer: {
+        devMiddleware: { publicPath: '/dist' },
+        static: { directory: path.resolve(__dirname) },
+        hot: true
     },
 };
