@@ -35,3 +35,18 @@ var result = words.filter(word => word.indexOf('b') > -1);
 
 console.log(result); // 결과 : b가 포함된 ["ab가나", "bcde", "아자카타abc"] 가 콘솔에 찍힌다
 ```
+
+#### Array.indexOf()
+배열에서 해당요소가 존재하면 요소의 index를, 없으면 -1을 반환한다.
+제이쿼리의 $.inArray()와 비슷.
+```javascript
+  const array1 = [1,2,3,4,5];
+
+  // JS
+  console.log(array1.indexOf(1)); // 0
+  console.log(array1.indexOf(6)); // -1
+  
+  // JQuery
+  console.log($.inArray(2, array1)); // 1
+  console.log($.inArray(8, array1)); // -1
+```
