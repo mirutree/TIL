@@ -30,6 +30,14 @@
    REPLACE(text, 'A', 'B')
    REGEXP_REPLACE(source, pattern, replacement)
    ```
+ - **문자열 결합**
+   - concat('문자열1','문자열2' ...) : 문자열을 합친 결과를 반환한다.
+   ```sql
+   SELECT concat('ABCD', 'EFG'); 	--> ABCDEFG
+   SELECT concat('ABC', 'D', 'EF', 'G'); --> ABCDEFG
+   SELECT concat('ABCD', NULL, 'EFG'); --> ABCDEFG
+   ```
+   
  - **범위조회**
     ```sql
     BETWEEN A AND B     : A와 B 사이에 있는 값을 조회
