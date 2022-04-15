@@ -63,3 +63,37 @@
      -- 오늘날짜 -2주이전 일자를 'yyyy년 mm월 dd일'의 포맷형태로 반환
      SELECT TO_CHAR(now() -'14 day'::interval, 'yyyy년 mm월 dd일') AS before2W; --> (오늘이 22년 4월 15일이라면) 2022년 04월 01일
     ```
+
+ - **특정 날짜에 태어난 사람이 몇 살인지 계산하기**
+   - AGE()와 extract()을 활용해서 만 나이 계산하기
+   - AGE(timestamp, timestamp) : 첫번째 인수에서 두번째 인수를 빼고 결과를 반환
+   ```sql
+   
+   ['95년 10월 13일생'인 사람이 태어난지 얼마나 되었는지 계산]
+   
+   -- 태어난지 얼마나 되었는지 밀리초까지 계산
+   select age(now(), '1995-10-13 00:00:00'::timestamp); --> ex)26 years 6 mons 2 days 17:11:18.819161
+   
+   -- 태어난지 얼마나 되었는지 날짜 계산
+   select age(current_date, '1995-10-13'::date);        --> ex)26 years 6 mons 2 days
+   ```
+   - EXTRACT([field] FROM [source]) : '날짜/시간 데이터'에서 '년도/월/일'를 반환한다
+     - **field?** 반환할 데이터의 특정 요소
+     - ex) CENTURY(세기), YEAR(연도), QUARTER(분기), MONTH(월), WEEK(주), DOY(연중일), DAY(일), DOW(일요일(0)~토요일(6)), HOUR(시간), MINUTE(분), SECOND(초)
+     - **source?** 실제 timestamp값
+   ```sql
+   select extract(CENTURY from '1999-12-31'::date);  --> 20(세기)
+   select extract(QUARTER from '220101'::timestamp); --> 1(분기)
+   select extract(MONTH from '220815'::date);        --> 8(월)
+   select extract(DOW from '220415'::date);          --> 5(금요일)
+   ```
+   - 만 나이 계산
+   ```sql
+   SELECT extract(year from age('19951013'::date)) AS returnAge; --> 26(만 26세)
+   ```
+
+
+
+
+
+
