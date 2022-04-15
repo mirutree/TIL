@@ -51,4 +51,15 @@
       ELSE [else결과] <-- else 생략가능. else인 경우 null반환	
     END
     ```
-  
+ - **미래와 과거의 날짜 계산**
+   - ::timestamp와 ::interval을 활용한 여러 날짜 계산
+    ```sql
+     -- 문자열'20220415'를 시간타입으로 변환하여 +1일을 한 값
+     SELECT ('20220415'::timestamp +'1 day' ) AS tomorrow; --> 2022-04-16 00:00:00.000 
+     
+     -- 오늘날짜 +2달이후 일자를 'YYYY/MM/DD'의 포맷형태로 반환
+     SELECT TO_CHAR(NOW() + '2 month', 'YYYY/MM/DD') AS after2M; --> (오늘이 22년 4월 15일이라면) 2022/06/15
+     
+     -- 오늘날짜 -2주이전 일자를 'yyyy년 mm월 dd일'의 포맷형태로 반환
+     SELECT TO_CHAR(now() -'14 day'::interval, 'yyyy년 mm월 dd일') AS before2W; --> (오늘이 22년 4월 15일이라면) 2022년 04월 01일
+    ```
