@@ -92,7 +92,9 @@
    SELECT extract(year from age('19951013'::date)) AS returnAge; --> 26(만 26세)
    ```
 
-
+ - **서브쿼리에 반환하는 값이 있는지 판단**
+   - EXISTS (subquery) : 서브쿼리에 해당하는 조건이 있는지 판단하는 불리언 연산자  
+   - NOT EXISTS (subquery) : EXISTS의 반대개념. 서브쿼리에 값이 없으면 종료
 
 
 
