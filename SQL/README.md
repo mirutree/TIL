@@ -63,6 +63,12 @@
      -- 오늘날짜 -2주이전 일자를 'yyyy년 mm월 dd일'의 포맷형태로 반환
      SELECT TO_CHAR(now() -'14 day'::interval, 'yyyy년 mm월 dd일') AS before2W; --> (오늘이 22년 4월 15일이라면) 2022년 04월 01일
     ```
+    ```sql
+    --오늘이 22년 4월 29일인 경우--
+     SELECT TO_CHAR(NOW(),'YYYY-MM-DD ');                                 -- ex)2022-04-29 
+     SELECT TO_CHAR(NOW() + INTERVAL '1 MONTHS','YYYY-MM-DD');            -- ex)2022-05-29
+     SELECT TO_CHAR(NOW() - INTERVAL '24 hour', 'YYYY-MM-DD HH24:MI:SS'); -- ex)2022-04-28 10:37:51
+    ```
 
  - **특정 날짜에 태어난 사람이 몇 살인지 계산하기**
    - AGE()와 extract()을 활용해서 만 나이 계산하기
@@ -96,6 +102,11 @@
    - EXISTS (subquery) : 서브쿼리에 해당하는 조건이 있는지 판단하는 불리언 연산자  
    - NOT EXISTS (subquery) : EXISTS의 반대개념. 서브쿼리에 값이 없으면 종료
 
-
-
+ - **OVERLAPS**
+   - 두개의 날짜조건 사이에 중첩되는 구간이 있다면 true를 없다면 false를 반환한다.
+   ```sql
+   SELECT (DATE '2022-01-01', DATE '2022-06-02') OVERLAPS (DATE '2022-06-01', DATE '2022-12-31');    -- true
+   SELECT (DATE '2022-01-01', interval '50 days') OVERLAPS (DATE '2022-06-01', interval '-50 days'); -- false
+   ```
+   
 
