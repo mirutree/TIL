@@ -1,6 +1,14 @@
 
 ##### encodeURIComponent(String)
 문자열을 인코딩하여 URI로 데이터를 전달한다.   
+
+##### console.log에서 백틱을 이용해서 동적으로 로그 찍기
+```javascript
+const string = 'hello';
+const number = 12345;
+console.log(`value: ${string}, type: ${typeof string}`); // value: hello, type: string
+console.log(`value: ${number}, type: ${typeof number}`); // value: 12345, type: number
+```
    
 ##### String.indexOf(searchvalue, position)
 찾을값은 필수값이지만 위치값은 옵션이다. 대소문자를 구분한다. 문자열에 찾는 값이 없으면 -1을 반환한다.   
