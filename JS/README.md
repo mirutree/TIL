@@ -1,9 +1,11 @@
 #### Truthy값 Falsy값
-boolean문액일때 명확히 true나 false로 정의되지 않아도 true나 false로 평가되는 값이다.   
-false로 평가되는 falsy(거짓같은)값 예시   
- - 0, -0, 0n, "", '', ``, null, undefined, NaN 등
-true로 평가
+boolean문액일때 명확히 true나 false로 정의되지 않아도 true나 false로 평가되는 값이다.
+```javascript 
+//f alse로 평가되는 falsy(거짓같은)값 예시   
+ - 0, -0, 0n, "", '', ``, null, undefined, NaN 등       
+// true로 평가
  - {}, [], "0", "false", Infinity 등
+```
    
 ##### encodeURIComponent(String)
 문자열을 인코딩하여 URI로 데이터를 전달한다.   
