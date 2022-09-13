@@ -1,10 +1,18 @@
 #### Truthy값 Falsy값
 boolean문액일때 명확히 true나 false로 정의되지 않아도 true나 false로 평가되는 값이다.
 ```javascript 
-//f alse로 평가되는 falsy(거짓같은)값 예시   
+//false로 평가되는 falsy(거짓같은)값 예시   
  - 0, -0, 0n, "", '', ``, null, undefined, NaN 등       
-// true로 평가
- - {}, [], "0", "false", Infinity 등
+ 
+// true로 평가되는 truthy
+ - {}, [], "0", "false", Infinity 등   
+   
+// 논리연산자 &&와 함께할 경우 리턴값
+true && "dog" // return "dog"
+[] && "cat"   // return "cat"
+
+console.log(false && "dog"); // false
+console.log(0 && "cat");     // false
 ```
    
 ##### encodeURIComponent(String)
