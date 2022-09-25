@@ -9,5 +9,9 @@
  
    
 ---
-VS Code 단축키 정리   
+
+### VS Code 단축키 정리   
  - https://github.com/mirutree/TIL/blob/main/Tool/VS%20Code/%EC%9E%90%EC%A3%BC%20%EC%93%B0%EB%8A%94%20%EB%8B%A8%EC%B6%95%ED%82%A4.md
+   
+#### Mac터미널에서 `code .`를 이용해서 VSCode를 실행하려 할 때 `zsh: command not found: code`문구가 뜨며 실행되지 않는다면
+ - 코드를 열어 커맨드 팔레트를 연 후 `Shell Command: Install 'code' command in PATH`를 입력하여 PATH에 등록한다.
